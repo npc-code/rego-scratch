@@ -1,6 +1,12 @@
 policy:
   name: sg_group_deny
   config:
-    address: ["0.0.0.0/0"]
-    direction: ingress
-  action: deny
+    test_values: ["0.0.0.0/0"]
+    path_to_resource:
+    - name: ingress
+      array: true  
+    - name: cidr_blocks
+      array: true 
+    description: "security groups by default should not be created with ingress from anywhere"
+    policy_code: "aribitrary policy code"
+    doc_link: "http://example.com"
