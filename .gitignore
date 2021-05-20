@@ -1,0 +1,4 @@
+.terraform/
+.git
+tfplan.*
+results.json
