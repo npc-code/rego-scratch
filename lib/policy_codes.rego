@@ -1,5 +1,6 @@
 package policy_codes
 
+
 aws_sg_policy_codes := {
     "sg_group_deny": {
         "desc": "this security group contains a permissive ingress rule", 

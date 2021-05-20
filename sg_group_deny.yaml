@@ -1,0 +1,6 @@
+policy:
+  name: sg_group_deny
+  config:
+    address: ["0.0.0.0/0"]
+    direction: ingress
+  action: deny
