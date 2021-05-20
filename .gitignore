@@ -2,3 +2,4 @@
 .git
 tfplan.*
 results.json
+*.auto.tfvars

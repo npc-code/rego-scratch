@@ -1,6 +1,6 @@
 provider "aws" {
-    region = "us-west-1"
-    profile = "npc_personal_admin"
+  region  = "us-west-1"
+  profile = var.profile
 }
 
 module "test_module" {
@@ -22,7 +22,7 @@ resource "aws_vpc" "test_vpc" {
 resource "aws_security_group" "bad_sg" {
   name        = "bad_sg"
   description = "bad man"
-  vpc_id      = aws_vpc.test_vpc.id 
+  vpc_id      = aws_vpc.test_vpc.id
 
   ingress {
     from_port   = 0
@@ -50,7 +50,7 @@ resource "aws_security_group" "bad_sg" {
 resource "aws_security_group" "good_sg" {
   name        = "good_sg"
   description = "good security group"
-  vpc_id      = aws_vpc.test_vpc.id 
+  vpc_id      = aws_vpc.test_vpc.id
 }
 
 resource "aws_security_group_rule" "bad_rule" {
@@ -69,4 +69,10 @@ resource "aws_security_group_rule" "good_rule" {
   protocol          = "tcp"
   cidr_blocks       = ["0.0.0.0/0"]
   security_group_id = aws_security_group.good_sg.id
+}
+
+variable "profile" {
+  type        = string
+  description = "profile name.  not setting will use your default IAM profile"
+  default     = ""
 }
