@@ -54,3 +54,24 @@ sg_rule_deny_imported[reason] {
     "policy_code": policy_code
   }
 }
+
+#security_groups = all {
+#  all := [ name |
+#    name := input.resource_changes[_]
+#    name.type == "aws_security_group"
+#  ]
+#}
+
+#allowed_groups {
+#  names := security_groups[_].name
+#}
+
+
+#resources[resource_type] = all {
+#    some resource_type
+#    resource_types[resource_type]
+#    all := [name |
+#        name:= input.resource_changes[_]
+#        name.type == resource_type
+#    ]
+#}
