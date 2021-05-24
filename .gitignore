@@ -1,5 +1,7 @@
 .terraform/
+test_data/.terraform
 .git
 tfplan.*
 results.json
 *.auto.tfvars
+*.tfstate
