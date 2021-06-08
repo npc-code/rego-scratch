@@ -38,11 +38,17 @@ deny [reason] {
 }
 
 # same check as above.  creates a collection with security group name as the key.
-deny2 [reason] {
+deny [reason] {
     count(names_not_in_allowed_names) > 0
     result = { name: address |
       name := names_not_in_allowed_names[_]
       address := {"resource address": security_group_data[name], "description": "security group not in approved list"}
     } 
     reason := result
+}
+
+default test_condition = false
+
+test_condition {                                      # allow is true if...
+    count(deny) == 0                           # there are zero violations.
 }
